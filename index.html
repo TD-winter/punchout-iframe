@@ -43,10 +43,10 @@
 <script>
 	var iframeArr = location.href.split('iframe=')
 	var iframmeUrl = null
-	if ( iframeArr[1] ) {
+	if ( iframeArr && iframeArr[1] ) {
 		iframeUrl = iframeArr[1]
 	}
-	document.getElementById('iframe').src = iframeUrl
+	document.getElementById('iframe').src = decodeURIComponent(iframeUrl)
 
 	function changeIframe() {
 		var url = document.getElementById('changeIframe').value;
