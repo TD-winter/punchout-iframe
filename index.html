@@ -1,7 +1,57 @@
 <!doctype html>
-<html lang="en">
-    <head></head>
-    <body>
-        <iframe src="" style="width:1200px;height: 800px;"></iframe>
-    </body>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta http-equiv="refresh" content="0; url=http://example.com/" /> -->
+  <!-- 页面跳转 -->
+  <title>punchout iframe 测试</title>
+  <style>
+  	body{
+  		text-align: center;
+  	}
+  	#changeIframe {
+  		width: 280px;
+  		height: 28px;
+  		border-radius: 4px;
+  		border: 1px solid #ccc;
+  		outline: none;
+  	}
+  	.change_iframe_button {
+  		height: 28px;
+  		margin-left: 20px;
+  		background: #fff;
+  		border-radius: 4px;
+  		border: 1px solid #ccc;
+  		cursor: pointer;
+  		outline: none;
+  	}
+  	.change_iframe_button:active {
+  		background: #eee;
+  	}
+  	#iframe {
+  		margin: 40px auto;
+  	}
+  </style>
+</head>
+<body>
+  <input id="changeIframe" />
+  <button class="change_iframe_button" onClick="changeIframe()">修改iframe地址</button>
+  <iframe id="iframe" width="1200" height="800" src=""></iframe>
+</body>
+<script>
+	var iframeArr = location.href.split('iframe=')
+	var iframmeUrl = null
+	if ( iframeArr[1] ) {
+		iframeUrl = iframeArr[1]
+	}
+	document.getElementById('iframe').src = iframeUrl
+
+	function changeIframe() {
+		var url = document.getElementById('changeIframe').value;
+		document.getElementById('iframe').src = url.indexOf('http') > -1 ? url : 'http://' + url;
+	}
+
+</script>
 </html>
